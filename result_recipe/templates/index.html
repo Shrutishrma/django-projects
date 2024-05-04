@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            justify-content: center; 
+            align-items: center;
+            height: 100vh; 
+        }
+
+        .container {
+            max-width: 600px; 
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .search-form {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px; 
+            margin-bottom: 20px; 
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: 150px; 
+            object-fit: cover;
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-grid">
+            <img src="https://rishikeshcamps.in/wp-content/uploads/2023/05/restaarant.jpg" alt="Restaurant Image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_cF_zusbfqPKhU0Tz3DzJ9dWmme9MPdHcju5UBKNJww&s" alt="Second Image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRen-QMsYrsL6-LabzlCWah1uIIHil8aANCk6zCkY72-Q&s" alt="Third Image">
+        </div>
+        <h1>Search for Recipe</h1>
+        <form class="search-form" method="POST">
+            {% csrf_token %}
+            <label for="recipe_title">Recipe Title:</label>
+            <input type="text" id="recipe_title" name="title">
+            <button type="submit">Search</button>
+        </form>
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
